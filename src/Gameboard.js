@@ -1,7 +1,7 @@
 const React = require('react')
 const Tile = require('./Tile')
 const { connect } = require('react-redux')
-const { handleTileClick, handleSwitchTurn } = require('./redux/actionCreators')
+const { handleTileClick, handleSwitchTurn, handleCheckWinner } = require('./redux/actionCreators')
 
 const Gameboard = React.createClass({
   handleClick(e){
@@ -16,16 +16,26 @@ const Gameboard = React.createClass({
   },
   handleAcceptClick(index){
     this.props.dispatchHandleTileClick(index)
+    this.props.dispatchHandleCheckWinner()
     this.props.dispatchHandleSwitchTurn()
   },
   render(){
-    var { tiles, turn } = this.props
+    var { tiles, turn, winner } = this.props
     return (
       <div id='gameboard-div' onClick={this.handleClick}>
         {
-          turn
+          (!winner && turn)
           ? <h1 style={{color: 'blue'}}>Player 1's turn</h1>
           : <h1 style={{color: 'red'}}>Player 2's turn</h1>
+        }
+
+        {
+          winner && turn &&
+          <h1>Player 2 wins!</h1>
+        }
+        {
+          winner && !turn &&
+          <h1>Player 1 wins!</h1>
         }
 
         {
@@ -47,7 +57,8 @@ const Gameboard = React.createClass({
 const mapStateToProps = (state) => {
   return {
     tiles: state.tiles,
-    turn: state.turn
+    turn: state.turn,
+    winner: state.winner
   }
 }
 
@@ -58,6 +69,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     dispatchHandleSwitchTurn(){
       dispatch(handleSwitchTurn())
+    },
+    dispatchHandleCheckWinner(){
+      dispatch(handleCheckWinner())
     }
   }
 }
