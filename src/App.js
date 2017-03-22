@@ -1,10 +1,11 @@
 const React = require('react')
+const Gameboard = require('./Gameboard')
 
 const App = React.createClass({
   render(){
     return (
       <div>
-      ejpigjwepgjwepogj
+        <Gameboard />
       </div>
     )
   }
