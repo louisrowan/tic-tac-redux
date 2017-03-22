@@ -19,9 +19,15 @@ const Gameboard = React.createClass({
     this.props.dispatchHandleSwitchTurn()
   },
   render(){
-    var { tiles } = this.props
+    var { tiles, turn } = this.props
     return (
       <div id='gameboard-div' onClick={this.handleClick}>
+        {
+          turn
+          ? <h1 style={{color: 'blue'}}>Player 1's turn</h1>
+          : <h1 style={{color: 'red'}}>Player 2's turn</h1>
+        }
+
         {
           tiles &&
           tiles.map((t, i) => {
@@ -40,7 +46,8 @@ const Gameboard = React.createClass({
 
 const mapStateToProps = (state) => {
   return {
-    tiles: state.tiles
+    tiles: state.tiles,
+    turn: state.turn
   }
 }
 

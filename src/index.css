@@ -12,6 +12,13 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  pointer-events: all;
+}
+
+.tile-div h2 {
+  color: white;
+  text-align: center;
+  margin: 30% 0%;
 }
 
 .tile-div:hover {
@@ -26,12 +33,20 @@ body {
   box-sizing: border-box;
 }
 
+#gameboard-div h1 {
+  text-align: center;
+}
+
 .blue {
   background: blue;
+  border: none;
+  transition: 500ms ease-out;
 }
 
 .red {
   background: red;
+  border: none;
+  transition: 500ms ease-out;
 }
 
 .blue:hover, .red:hover {

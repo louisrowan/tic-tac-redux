@@ -18,7 +18,8 @@ const DEFAULT_STATE = {
 function handleTileClick(state, action){
   const newTile = {}
   var style = state.turn ? 'blue' : 'red'
-  Object.assign(newTile, {style: style})
+  var value = state.turn ? 'X' : 'O'
+  Object.assign(newTile, {style: style}, {value: value})
 
   const newState = {}
   Object.assign(newState, state)
