@@ -1,7 +1,8 @@
 const {
   HANDLE_TILE_CLICK,
   HANDLE_SWITCH_TURN,
-  HANDLE_CHECK_WINNER
+  HANDLE_CHECK_WINNER,
+  HANDLE_PLAY_AGAIN
 } = require('./actionCreators')
 
 const DEFAULT_STATE = {
@@ -72,6 +73,12 @@ function handleCheckWinner(state, action){
   return newState
 }
 
+function handlePlayAgain(state, action) {
+  const newState = {}
+  Object.assign(newState, DEFAULT_STATE)
+  return newState
+}
+
 export const rootReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case HANDLE_TILE_CLICK:
@@ -80,6 +87,8 @@ export const rootReducer = (state = DEFAULT_STATE, action) => {
       return handleSwitchTurn(state, action)
     case HANDLE_CHECK_WINNER:
       return handleCheckWinner(state, action)
+    case HANDLE_PLAY_AGAIN:
+      return handlePlayAgain(state, action)
     default:
       return state
   }

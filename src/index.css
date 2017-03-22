@@ -8,11 +8,13 @@ body {
   height: 100px;
   width: 100px;
   border: 1px solid black;
+  background: white;
   float: left;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   pointer-events: all;
+  transition: 400ms linear;
 }
 
 .tile-div h2 {
@@ -27,13 +29,12 @@ body {
 
 #gameboard-div {
   margin: auto;
-  margin-top: 100px;
   height: 300px;
   width: 300px;
   box-sizing: border-box;
 }
 
-#gameboard-div h1 {
+h1 {
   text-align: center;
 }
 
@@ -51,4 +52,10 @@ body {
 
 .blue:hover, .red:hover {
   cursor: not-allowed;
+}
+
+button {
+  text-align: center;
+  padding: 10px;
+  margin: auto;
 }
