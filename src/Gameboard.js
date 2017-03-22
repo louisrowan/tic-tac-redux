@@ -5,6 +5,7 @@ const { handleTileClick, handleSwitchTurn, handleCheckWinner } = require('./redu
 
 const Gameboard = React.createClass({
   handleClick(e){
+    if (this.props.winner) return
     var index = e.target.id
     var tile = this.props.tiles[index]
     switch (tile.value){
@@ -24,11 +25,13 @@ const Gameboard = React.createClass({
     return (
       <div id='gameboard-div' onClick={this.handleClick}>
         {
-          (!winner && turn)
-          ? <h1 style={{color: 'blue'}}>Player 1's turn</h1>
-          : <h1 style={{color: 'red'}}>Player 2's turn</h1>
+          !winner && turn &&
+          <h1 style={{color: 'blue'}}>Player 1's turn</h1>
         }
-
+        {
+          !winner && !turn &&
+          <h1 style={{color: 'red'}}>Player 2's turn</h1>
+        }
         {
           winner && turn &&
           <h1>Player 2 wins!</h1>

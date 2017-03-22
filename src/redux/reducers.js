@@ -47,7 +47,6 @@ function handleSwitchTurn(state, action){
 }
 
 function handleCheckWinner(state, action){
-  console.log('in check winner', state)
   var tiles = state.tiles
   var winner;
 
@@ -70,7 +69,6 @@ function handleCheckWinner(state, action){
 
   const newState = {}
   Object.assign(newState, state, { winner })
-  console.log(newState.winner)
   return newState
 }
 
