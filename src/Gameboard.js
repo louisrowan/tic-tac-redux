@@ -1,25 +1,25 @@
 const React = require('react')
 const Tile = require('./Tile')
 const { connect } = require('react-redux')
+const { handleTileClick, handleSwitchTurn } = require('./redux/actionCreators')
 
 const Gameboard = React.createClass({
-  getIntialState(){
-    return {
-      turn: null
-    }
-  },
   handleClick(e){
     var index = e.target.id
-    var tiles = this.state.tiles.slice(0)
-    console.log(tiles, index, tiles[index])
-    var tile = tiles[index]
-    console.log(tiles)
-    tile.style = Object.assign(tile.style, {background: 'blue'})
-    // this.setState({ tiles })
+    var tile = this.props.tiles[index]
+    switch (tile.value){
+      case null:
+        return this.handleAcceptClick(index)
+      default:
+        return
+    }
+  },
+  handleAcceptClick(index){
+    this.props.dispatchHandleTileClick(index)
+    this.props.dispatchHandleSwitchTurn()
   },
   render(){
     var { tiles } = this.props
-    console.log(this.props)
     return (
       <div id='gameboard-div' onClick={this.handleClick}>
         {
@@ -45,7 +45,14 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    dispatchHandleTileClick(tile) {
+      dispatch(handleTileClick(tile))
+    },
+    dispatchHandleSwitchTurn(){
+      dispatch(handleSwitchTurn())
+    }
+  }
 }
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Gameboard)

@@ -25,3 +25,15 @@ body {
   width: 300px;
   box-sizing: border-box;
 }
+
+.blue {
+  background: blue;
+}
+
+.red {
+  background: red;
+}
+
+.blue:hover, .red:hover {
+  cursor: not-allowed;
+}
