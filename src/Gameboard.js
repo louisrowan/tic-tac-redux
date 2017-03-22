@@ -52,7 +52,7 @@ const Gameboard = React.createClass({
           <h1>Player 1 wins!</h1>
         }
         {
-          moves >= 9 &&
+          moves >= 9 && !winner && 
           <h1>It's a tie!</h1>
         }
       <div id='gameboard-div' onClick={this.handleClick}>
