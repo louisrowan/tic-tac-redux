@@ -1,2 +1,13 @@
 helloooo
 
+goal: no logic whatsoever in tile
+
+gameboard:
+state:
+tiles: array of objects with 'value' property. value is either 1, 2, or 0.
+turn: either 1 or 2
+
+-needs click handler for when something is clicked
+-check to see if tile had already been clicked
+-if already clicked, do nothing
+-if n
